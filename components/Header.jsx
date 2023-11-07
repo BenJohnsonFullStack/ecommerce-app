@@ -6,13 +6,22 @@ const Header = () => {
     <header>
       <nav className="py-4 px-10 flex justify-between items-center">
         <div className="flex gap-10">
-          <a href="/" className="hover:text-red-600 transition-all">
+          <a
+            href="/"
+            className="hover:text-red-600 transition-all font-semibold"
+          >
             Home
           </a>
-          <a href="/store" className="hover:text-red-600 transition-all">
+          <a
+            href="/store"
+            className="hover:text-red-600 transition-all font-semibold"
+          >
             Store
           </a>
-          <a href="/login" className="hover:text-red-600 transition-all">
+          <a
+            href="/login"
+            className="hover:text-red-600 transition-all font-semibold"
+          >
             Login
           </a>
         </div>
@@ -23,7 +32,7 @@ const Header = () => {
             src="/cart.svg"
             alt="a shopping cart icon"
           />
-          <div className="absolute top-5 left-5 rounded-full bg-red-600 w-4 h-4 flex justify-center items-center text-xs text-red-100">
+          <div className="absolute top-5 left-5 rounded-full bg-red-300 w-4 h-4 flex justify-center items-center text-xs text-black">
             3
           </div>
         </div>

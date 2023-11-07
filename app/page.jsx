@@ -1,3 +1,4 @@
+import Divider from "@/components/Divider";
 import Header from "@/components/Header";
 import { headers } from "@/next.config";
 import Image from "next/image";
@@ -18,6 +19,7 @@ export default function Home() {
             <a href="/store">Order Now</a>
           </div>
         </div>
+        <Divider />
       </main>
     </>
   );

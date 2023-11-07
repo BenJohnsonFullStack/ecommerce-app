@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Divider from "./Divider";
 
 const Header = () => {
   return (
@@ -27,7 +28,7 @@ const Header = () => {
           </div>
         </div>
       </nav>
-      <div className="w-full h-[2px] bg-black"></div>
+      <Divider />
     </header>
   );
 };

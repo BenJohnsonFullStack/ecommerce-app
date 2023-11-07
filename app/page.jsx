@@ -7,9 +7,9 @@ export default function Home() {
     <>
       <Header />
       <main>
-        <div className="pt-6 px-10">
-          <h1 className="text-[2.4rem] font-bold">The Chop House</h1>
-          <h2 className="text-[1.2rem] font-bold pl-2">
+        <div className="mt-6 px-10">
+          <h1 className="text-[2rem] font-bold">The Chop House</h1>
+          <h2 className="text-[1.2rem] font-bold">
             Premium cuts delivered to your door.
           </h2>
         </div>

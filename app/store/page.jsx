@@ -1,7 +1,12 @@
-import React from "react";
+import Header from "@/components/Header";
 
 const Store = () => {
-  return <div>Store</div>;
+  return (
+    <>
+      <Header />
+      <main></main>
+    </>
+  );
 };
 
 export default Store;

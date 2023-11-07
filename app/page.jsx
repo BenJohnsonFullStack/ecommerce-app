@@ -7,11 +7,16 @@ export default function Home() {
     <>
       <Header />
       <main>
-        <div className="mt-6 px-10">
-          <h1 className="text-[2rem] font-bold">The Chop House</h1>
-          <h2 className="text-[1.2rem] font-bold">
-            Premium cuts delivered to your door.
-          </h2>
+        <div className="py-12 px-10 bg-home-hero bg-cover bg-center relative isolate after:absolute after:inset-0 after:bg-black after:opacity-70 after:z-[-1]">
+          <div>
+            <h1 className="text-[2rem] font-bold text-white">The Chop House</h1>
+            <h2 className="text-sm text-white py-2">
+              Premium cuts delivered to your door.
+            </h2>
+          </div>
+          <div className="w-1/2 mx-auto text-center bg-red-300 shadow-lg rounded-md mt-8 text-black py-2 cursor-pointer hover:bg-red-600 transition-color duration-200">
+            <a href="/store">Order Now</a>
+          </div>
         </div>
       </main>
     </>

@@ -10,7 +10,7 @@ const ProductCard = ({ title, sku, price, description, weight, image }) => {
         <div id="flex">
           <div id="headers">
             <h2 id="title">{title}</h2>
-            <p id="SKU">{sku}</p>
+            <p id="SKU">SKU: {sku}</p>
           </div>
 
           <div>

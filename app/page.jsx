@@ -1,8 +1,5 @@
-import Divider from "@/components/Divider";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import { headers } from "@/next.config";
-import Image from "next/image";
 
 export default function Home() {
   return (

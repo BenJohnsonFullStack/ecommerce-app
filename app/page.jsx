@@ -51,7 +51,7 @@ export default function Home() {
             <div className="py-3 pb-16">
               <p>
                 Almost 150 years later, The Chop House boasts the largest ranch
-                in Montanta, with nearly a thousand head of cattle. In 1911, our
+                in Montana, with nearly a thousand head of cattle. In 1911, our
                 founders, their wives and their children prided themselves on
                 hard work and bringing quality meat to their neighbors. Our
                 greatest joy is still bringing the best beef in America straight

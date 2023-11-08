@@ -36,14 +36,22 @@ const Footer = () => {
             target="_blank"
             className="w-6"
           >
-            <FontAwesomeIcon icon={faInstagram} style={{ color: "#000000" }} />
+            <FontAwesomeIcon
+              icon={faInstagram}
+              color="#000"
+              className="hover:text-red-600"
+            />
           </a>
           <a
             href="https://www.linkedin.com/in/benjohnsonfullstack/"
             target="_blank"
             className="w-6"
           >
-            <FontAwesomeIcon icon={faLinkedin} style={{ color: "#000000" }} />
+            <FontAwesomeIcon
+              icon={faLinkedin}
+              color="#000"
+              className="hover:text-red-600"
+            />
           </a>
         </div>
         <Divider />

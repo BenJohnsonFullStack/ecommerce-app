@@ -7,10 +7,8 @@ const client = createClient({
 });
 
 const getProducts = async () => {
-  await client
-    .getEntries()
-    .then((entries) => console.log(entries))
-    .catch(console.error);
+  const products = await client.getEntries();
+  return products;
 };
 
 export { getProducts };

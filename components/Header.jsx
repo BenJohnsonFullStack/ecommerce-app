@@ -1,29 +1,30 @@
 import Image from "next/image";
 import Divider from "./Divider";
+import Link from "next/link";
 
 const Header = () => {
   return (
     <header>
       <nav className="py-4 px-10 flex justify-between items-center">
         <div className="flex gap-10">
-          <a
+          <Link
             href="/"
             className="hover:text-red-600 transition-all font-semibold"
           >
             Home
-          </a>
-          <a
+          </Link>
+          <Link
             href="/store"
             className="hover:text-red-600 transition-all font-semibold"
           >
             Store
-          </a>
-          <a
+          </Link>
+          <Link
             href="/login"
             className="hover:text-red-600 transition-all font-semibold"
           >
             Login
-          </a>
+          </Link>
         </div>
         <div className="relative w-8 cursor-pointer">
           <Image

@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -18,9 +19,9 @@ export default function Home() {
             id="order-button"
             className="w-1/2 mx-auto text-center bg-red-300 shadow-lg rounded-md mt-8 text-black py-2 cursor-pointer hover:bg-red-600 transition-color duration-200"
           >
-            <a href="/store" className="font-semibold">
+            <Link href="/store" className="font-semibold">
               Order Now
-            </a>
+            </Link>
           </div>
         </section>
 

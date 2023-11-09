@@ -4,10 +4,16 @@ const ProductCard = ({ title, sku, price, description, weight, image }) => {
   return (
     <div
       id="card"
-      className="border-4 border-black rounded-sm w-[min(100%-1rem,20rem)] mx-auto"
+      className="border-4 border-black rounded-lg w-[min(100%-1rem,20rem)] mx-auto"
     >
       <div id="image" className="w-full">
-        <Image width={1620} height={1080} alt="product image" src={image} />
+        <Image
+          width={1620}
+          height={1080}
+          alt="product image"
+          src={image}
+          className="rounded-t-sm"
+        />
       </div>
       <div className="px-4 py-4">
         <div id="details">

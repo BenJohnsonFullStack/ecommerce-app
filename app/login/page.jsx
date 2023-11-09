@@ -8,7 +8,7 @@ const Login = () => {
       <main>
         <div
           id="login-card"
-          className="w-[min(100%-2em,20rem)] shadow-lg bg-gray-200 px-2 py-6 text-center my-20 mx-auto"
+          className="w-[min(100%-2em,20rem)] shadow-lg bg-gray-100 px-2 py-6 text-center my-20 mx-auto rounded-lg ring-1 ring-black"
         >
           <div>
             <h2>Welcome Back!</h2>

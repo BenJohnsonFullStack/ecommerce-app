@@ -12,15 +12,16 @@ const Store = async () => {
       <Header />
       <main>
         {products.map((product) => (
-          <ProductCard
-            key={product.sys.id}
-            title={product.fields.productName}
-            sku={product.fields.sku}
-            price={product.fields.price}
-            description={product.fields.productDescription}
-            weight={product.fields.productWeight}
-            image={`https:${product.fields.productImage.fields.file.url}`}
-          />
+          <div key={product.sys.id} className="mt-6 grid gap-4">
+            <ProductCard
+              title={product.fields.productName}
+              sku={product.fields.sku}
+              price={product.fields.price}
+              description={product.fields.productDescription}
+              weight={product.fields.productWeight}
+              image={`https:${product.fields.productImage.fields.file.url}`}
+            />
+          </div>
         ))}
       </main>
       <Footer />

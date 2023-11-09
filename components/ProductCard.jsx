@@ -44,7 +44,7 @@ const ProductCard = ({ title, sku, price, description, weight, image }) => {
           <div id="order" className="text-center mt-6 pb-2">
             <button
               id="addToCart"
-              className="border-3 bg-red-300 rounded-md px-4 py-1 hover:bg-red-700 transition-color duration-200"
+              className="bg-red-300 rounded-md px-4 py-1 hover:bg-red-700 transition-color duration-200"
             >
               Add to Cart
             </button>

@@ -11,14 +11,14 @@ const Login = () => {
           className="w-[min(100%-2em,20rem)] shadow-lg bg-gray-100 px-2 py-6 text-center my-20 mx-auto rounded-lg ring-1 ring-black"
         >
           <div>
-            <h2>Welcome Back!</h2>
-            <h3>Please login to your account.</h3>
+            <h2 className="text-2xl font-bold">Welcome Back!</h2>
+            <h3 className="text-sm">Please login to your account.</h3>
           </div>
 
           <div>
-            <form>
+            <form className="py-6">
               <div>
-                <div>
+                <div className="py-2 flex flex-col">
                   <label htmlFor="email">Email Address</label>
                   <input
                     type="email"
@@ -28,7 +28,7 @@ const Login = () => {
                   />
                 </div>
 
-                <div className="flex flex-col">
+                <div className="py-2 flex flex-col">
                   <label htmlFor="password">Account Password</label>
                   <input
                     type="password"
@@ -39,7 +39,9 @@ const Login = () => {
                 </div>
 
                 <div>
-                  <button>Login</button>
+                  <button className="bg-red-300 rounded-md px-4 py-1 hover:bg-red-700 transition-color duration-200 my-6">
+                    Login
+                  </button>
                 </div>
 
                 <div>

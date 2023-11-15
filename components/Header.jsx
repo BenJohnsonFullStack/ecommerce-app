@@ -28,14 +28,6 @@ const Header = () => {
           >
             Store
           </Link>
-          <Link
-            href="/login"
-            className={`hover:text-red-600 transition-all font-semibold ${
-              pathname === "/login" ? "text-red-600" : ""
-            }`}
-          >
-            Login
-          </Link>
         </div>
         <div className="relative w-8 cursor-pointer">
           <Image

@@ -41,7 +41,7 @@ const Header = () => {
           <Image
             width={240}
             height={240}
-            src="/cart.svg"
+            src="/cart-01.png"
             alt="a shopping cart icon"
           />
           <div className="absolute top-5 left-5 rounded-full bg-red-300 w-4 h-4 flex justify-center items-center text-xs text-black">

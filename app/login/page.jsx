@@ -1,7 +1,14 @@
+"use client";
+
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { useFormState } from "react-dom";
+import { authenticate } from "@/lib/actions";
+import LoginButton from "@/components/LoginButton";
 
 const Login = () => {
+  const [code, action] = useFormState(authenticate, undefined);
+
   return (
     <>
       <Header />
@@ -16,7 +23,7 @@ const Login = () => {
           </div>
 
           <div>
-            <form className="py-6">
+            <form className="pt-6 pb-2" action={action}>
               <div>
                 <div className="py-2 flex flex-col">
                   <label htmlFor="email">Email Address</label>
@@ -39,18 +46,22 @@ const Login = () => {
                 </div>
 
                 <div>
-                  <button className="bg-red-300 rounded-md px-4 py-1 hover:bg-red-700 transition-color duration-200 my-6">
-                    Login
-                  </button>
+                  {code === "CredentialsSignin" && (
+                    <>
+                      <p className="text-sm text-red-500" aria-live="polite">
+                        Invalid Credentials
+                      </p>
+                    </>
+                  )}
                 </div>
-
-                <div>
-                  <button className="bg-black text-white rounded-md px-4 py-1 hover:bg-gray-700 transition-color duration-200">
-                    Create Account
-                  </button>
-                </div>
+                <LoginButton />
               </div>
             </form>
+            <div>
+              <button className="bg-black text-white rounded-md px-4 py-1 mb-4 hover:bg-gray-700 transition-color duration-200">
+                Create Account
+              </button>
+            </div>
           </div>
         </div>
       </main>

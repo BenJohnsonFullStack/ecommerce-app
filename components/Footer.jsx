@@ -15,14 +15,14 @@ const Footer = () => {
           Chester, MT 59522
           <br />
           <Link
-            href="tel:406.222.0022"
+            href="tel:111.111.1111"
             className="hover:text-red-600 transition-all font-semibold"
           >
             406.222.0022
           </Link>
           <br />
           <Link
-            href="email:chop@thechophouse.dev"
+            href="email:benjohnsonfullstack@gmail.com"
             className="hover:text-red-600 transition-all font-semibold"
           >
             chop@thechophouse.dev

@@ -45,12 +45,9 @@ const Login = () => {
                 </div>
 
                 <div>
-                  <p>-- OR --</p>
-                </div>
-
-                <div>
-                  {/* GOOGLE LOGIN BUTTON */}
-                  {/* GITHUB LOGIN BUTTON */}
+                  <button className="bg-black text-white rounded-md px-4 py-1 hover:bg-gray-700 transition-color duration-200">
+                    Create Account
+                  </button>
                 </div>
               </div>
             </form>

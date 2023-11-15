@@ -7,7 +7,7 @@ import { useFormState } from "react-dom";
 import { createAccount } from "@/lib/actions";
 
 const Page = () => {
-  const initialState = { email: null, password: null };
+  const initialState = { message: null };
   const [state, dispatch] = useFormState(createAccount, initialState);
 
   return (
@@ -50,10 +50,10 @@ const Page = () => {
                 </div>
 
                 <div>
-                  {code === "CredentialsSignin" && (
+                  {state && (
                     <>
                       <p className="text-sm text-red-500" aria-live="polite">
-                        Invalid Credentials
+                        {state}
                       </p>
                     </>
                   )}

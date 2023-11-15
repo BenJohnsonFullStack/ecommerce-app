@@ -3,12 +3,11 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { useFormState } from "react-dom";
-import { authenticate, logOut } from "@/lib/actions";
+import { authenticate } from "@/lib/actions";
 import LoginButton from "@/components/LoginButton";
 
 const Login = () => {
   const [code, action] = useFormState(authenticate, undefined);
-  const [state, dispatch] = useFormState(logOut, undefined);
 
   return (
     <>
@@ -62,14 +61,6 @@ const Login = () => {
               <button className="bg-black text-white rounded-md px-4 py-1 mb-4 hover:bg-gray-700 transition-color duration-200">
                 Create Account
               </button>
-            </div>
-
-            <div>
-              <form action={dispatch}>
-                <button className="bg-black text-white rounded-md px-4 py-1 mb-4 hover:bg-gray-700 transition-color duration-200">
-                  Log Out
-                </button>
-              </form>
             </div>
           </div>
         </div>

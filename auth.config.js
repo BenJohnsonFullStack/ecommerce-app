@@ -1,23 +1,19 @@
 const authConfig = {
   providers: [],
   pages: {
-    // assign login page
     signIn: "/login",
   },
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
-      // set restricted routes
       const isOnStore = nextUrl.pathname.startsWith("/store");
-      // authenticate/authorize
-      if (isOnStore) {
-        if (isLoggedIn) return true;
-        return false;
-      } else if (isLoggedIn) {
-        // redirect to store if logged in already
-        return Response.redirect(new URL("/store", nextUrl));
+
+      if (isOnStore && !isLoggedIn) {
+        // Redirect to the sign-in page if trying to access store without login
+        return Response.redirect(new URL("/login", nextUrl));
       }
-      // allow all other routes access without login
+
+      // Allow access to other pages if logged in or not on the store page
       return true;
     },
   },

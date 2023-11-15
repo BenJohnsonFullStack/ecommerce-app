@@ -1,15 +1,9 @@
-"use client";
-
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { redirect } from "next/navigation";
-import { useFormState } from "react-dom";
 import { createAccount } from "@/lib/actions";
 
 const Page = () => {
-  const initialState = { message: null };
-  const [state, dispatch] = useFormState(createAccount, initialState);
-
   return (
     <>
       <Header />
@@ -24,7 +18,7 @@ const Page = () => {
           </div>
 
           <div>
-            <form className="pt-6 pb-2" action={dispatch}>
+            <form className="pt-6 pb-2">
               <div>
                 <div className="py-2 flex flex-col">
                   <label htmlFor="email">Email Address</label>
@@ -49,15 +43,6 @@ const Page = () => {
                   />
                 </div>
 
-                <div>
-                  {state && (
-                    <>
-                      <p className="text-sm text-red-500" aria-live="polite">
-                        {state}
-                      </p>
-                    </>
-                  )}
-                </div>
                 <div>
                   <button className="bg-black text-white rounded-md px-4 py-1 mb-4 hover:bg-gray-700 transition-color duration-200">
                     Create Account

@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Divider from "./Divider";
 import Link from "next/link";
 import { usePathname } from "next/navigation";

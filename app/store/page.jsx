@@ -2,7 +2,6 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import ProductCard from "@/components/ProductCard";
 import { getProducts } from "@/data/cms/Products";
-
 const Store = async () => {
   const data = await getProducts();
   const products = data.items;

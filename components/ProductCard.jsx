@@ -1,6 +1,11 @@
+"use client";
+
 import Image from "next/image";
+import { useShoppingCart } from "@/context/ShoppingCartContext";
 
 const ProductCard = ({ title, sku, price, description, weight, image }) => {
+  const { addOne, removeAll, removeOne, cartItems } = useShoppingCart();
+
   return (
     <div
       id="card"
@@ -41,10 +46,12 @@ const ProductCard = ({ title, sku, price, description, weight, image }) => {
             </p>
           </div>
 
+          {/* {cartItems.size()} */}
           <div id="order" className="text-center mt-6 pb-2">
             <button
               id="addToCart"
               className="bg-red-300 rounded-md px-4 py-1 hover:bg-red-700 transition-color duration-200"
+              onClick={() => addOne(sku)}
             >
               Add to Cart
             </button>

@@ -4,8 +4,10 @@ import { useState } from "react";
 
 const ShoppingCart = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { getCartQuantity } = useShoppingCart();
-  const quantity = getCartQuantity();
+  const { getCartQuantity, cartItems, removeAll } = useShoppingCart();
+  const cartQuantity = getCartQuantity();
+
+  const products = [...cartItems.values()];
 
   const toggleCart = () => {
     setIsOpen((prev) => !prev);
@@ -20,14 +22,33 @@ const ShoppingCart = () => {
           src="/cart-01.png"
           alt="a shopping cart icon"
         />
-        {quantity > 0 && (
+        {cartQuantity > 0 && (
           <div className="absolute top-5 left-5 rounded-full bg-red-300 w-4 h-4 flex justify-center items-center text-xs text-black">
-            {quantity}
+            {cartQuantity}
           </div>
         )}
         {isOpen && (
-          <div className="bg-gray-600 rounded-md absolute top-6 right-4 z-10">
-            <h2 className="text-white py-4 px-4">Shopping Cart</h2>
+          <div className="bg-black rounded-md absolute top-6 right-4 z-10 p-6">
+            {products.map((product) => (
+              <div key={product.sku} className="my-6">
+                <div className="border-t-2 border-t-white my-1"></div>
+                <div className="flex gap-10 items-center px-4">
+                  <div className="text-white">
+                    <h3 className="text-xs">SKU: {product.sku}</h3>
+                    <h3 className="mt-4 text-xs italic">
+                      QTY: {product.quantity}
+                    </h3>
+                  </div>
+                  <button
+                    className="bg-red-500 text-sm px-4 py-1 rounded-md"
+                    onClick={() => removeAll(product.sku)}
+                  >
+                    Delete
+                  </button>
+                </div>
+                <div className="border-t-2 border-t-white mt-2"></div>
+              </div>
+            ))}
           </div>
         )}
       </div>

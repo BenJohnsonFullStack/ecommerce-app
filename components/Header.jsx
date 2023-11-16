@@ -4,6 +4,7 @@ import Image from "next/image";
 import Divider from "./Divider";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ShoppingCart from "./ShoppingCart";
 
 const Header = () => {
   const pathname = usePathname();
@@ -29,17 +30,7 @@ const Header = () => {
             Store
           </Link>
         </div>
-        <div className="relative w-8 cursor-pointer">
-          <Image
-            width={240}
-            height={240}
-            src="/cart-01.png"
-            alt="a shopping cart icon"
-          />
-          <div className="absolute top-5 left-5 rounded-full bg-red-300 w-4 h-4 flex justify-center items-center text-xs text-black">
-            3
-          </div>
-        </div>
+        <ShoppingCart />
       </nav>
       <Divider />
     </header>

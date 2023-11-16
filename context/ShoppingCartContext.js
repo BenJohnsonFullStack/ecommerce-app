@@ -1,6 +1,5 @@
 "use client";
 
-import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { createContext, useState, useContext } from "react";
 import ShoppingCart from "@/components/ShoppingCart";
 
@@ -12,7 +11,6 @@ export const ShoppingCartContext = createContext({
   addOne: () => {},
   removeOne: () => {},
   removeAll: () => {},
-  getTotalCost: () => {},
 });
 
 export const useShoppingCart = () => {
@@ -20,8 +18,7 @@ export const useShoppingCart = () => {
 };
 
 const ShoppingCartProvider = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [cartItems, setCartItems] = useLocalStorage("shopping-cart", new Map());
+  const [cartItems, setCartItems] = useState(new Map());
 
   const getItemQuantity = (sku) => {
     return cartItems.get(sku).quantity || 0;
@@ -36,7 +33,7 @@ const ShoppingCartProvider = ({ children }) => {
         })
       );
     } else {
-      const existingItem = cartItems.get(sku);
+      let existingItem = cartItems.get(sku);
       setCartItems((currItems) => {
         existingItem.quantity += 1;
         return currItems.set(sku, existingItem);
@@ -50,7 +47,7 @@ const ShoppingCartProvider = ({ children }) => {
     if (quantity === 1) {
       removeAll(sku);
     } else {
-      const existingItem = cartItems.get(sku);
+      let existingItem = cartItems.get(sku);
       setCartItems((currItems) => {
         existingItem -= 1;
         return currItems.set(sku, existingItem);
@@ -62,10 +59,6 @@ const ShoppingCartProvider = ({ children }) => {
     return cartItems.delete(sku);
   };
 
-  const toggleCart = () => {
-    setIsOpen((prev) => !prev);
-  };
-
   const getCartQuantity = () => {
     return cartItems.reduce((quantity, item) => item.quantity + quantity, 0);
   };
@@ -75,16 +68,15 @@ const ShoppingCartProvider = ({ children }) => {
       value={{
         cartItems,
         getCartQuantity,
-        toggleCart,
         getItemQuantity,
         addOne,
         removeOne,
         removeAll,
-        getTotalCost,
       }}
     >
       {children}
-      <ShoppingCart isOpen={isOpen} />
     </ShoppingCartContext.Provider>
   );
 };
+
+export default ShoppingCartProvider;

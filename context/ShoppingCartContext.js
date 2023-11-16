@@ -2,11 +2,12 @@
 
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { createContext, useState, useContext } from "react";
+import ShoppingCart from "@/components/ShoppingCart";
 
 export const ShoppingCartContext = createContext({
   cartItems: [],
-  openCart: () => {},
-  closeCart: () => {},
+  getCartQuantity: () => {},
+  toggleCart: () => {},
   getItemQuantity: () => {},
   addOne: () => {},
   removeOne: () => {},
@@ -47,7 +48,7 @@ const ShoppingCartProvider = ({ children }) => {
     const quantity = getItemQuantity(sku);
 
     if (quantity === 1) {
-      removeFromCart(sku);
+      removeAll(sku);
     } else {
       const existingItem = cartItems.get(sku);
       setCartItems((currItems) => {
@@ -56,4 +57,34 @@ const ShoppingCartProvider = ({ children }) => {
       });
     }
   };
+
+  const removeAll = (sku) => {
+    return cartItems.delete(sku);
+  };
+
+  const toggleCart = () => {
+    setIsOpen((prev) => !prev);
+  };
+
+  const getCartQuantity = () => {
+    return cartItems.reduce((quantity, item) => item.quantity + quantity, 0);
+  };
+
+  return (
+    <ShoppingCartContext.Provider
+      value={{
+        cartItems,
+        getCartQuantity,
+        toggleCart,
+        getItemQuantity,
+        addOne,
+        removeOne,
+        removeAll,
+        getTotalCost,
+      }}
+    >
+      {children}
+      <ShoppingCart isOpen={isOpen} />
+    </ShoppingCartContext.Provider>
+  );
 };

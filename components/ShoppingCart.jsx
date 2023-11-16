@@ -15,12 +15,13 @@ const ShoppingCart = () => {
 
   return (
     <>
-      <div className="relative w-8 cursor-pointer" onClick={toggleCart}>
+      <div className="relative w-8 cursor-pointer">
         <Image
           width={240}
           height={240}
           src="/cart-01.png"
           alt="a shopping cart icon"
+          onClick={toggleCart}
         />
         {cartQuantity > 0 && (
           <div className="absolute top-5 left-5 rounded-full bg-red-300 w-4 h-4 flex justify-center items-center text-xs text-black">

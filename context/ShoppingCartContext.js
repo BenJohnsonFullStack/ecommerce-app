@@ -1,11 +1,11 @@
 "use client";
 
 import { createContext, useState, useContext } from "react";
-import ShoppingCart from "@/components/ShoppingCart";
 
 export const ShoppingCartContext = createContext({
   cartItems: [],
   getCartQuantity: () => {},
+  getItemQuantity: () => {},
   toggleCart: () => {},
   getItemQuantity: () => {},
   addOne: () => {},
@@ -21,7 +21,8 @@ const ShoppingCartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState(new Map());
 
   const getItemQuantity = (sku) => {
-    return cartItems.get(sku).quantity || 0;
+    const item = cartItems.get(sku);
+    return item ? item.quantity || 0 : 0;
   };
 
   const addOne = (sku) => {
@@ -79,6 +80,7 @@ const ShoppingCartProvider = ({ children }) => {
     <ShoppingCartContext.Provider
       value={{
         cartItems,
+        getItemQuantity,
         getCartQuantity,
         getItemQuantity,
         addOne,

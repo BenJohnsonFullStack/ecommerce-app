@@ -4,7 +4,10 @@ import Image from "next/image";
 import { useShoppingCart } from "@/context/ShoppingCartContext";
 
 const ProductCard = ({ title, sku, price, description, weight, image }) => {
-  const { addOne, removeAll, removeOne, cartItems } = useShoppingCart();
+  const { addOne, removeAll, removeOne, cartItems, getItemQuantity } =
+    useShoppingCart();
+
+  const itemQuantity = getItemQuantity(sku);
 
   return (
     <div
@@ -46,7 +49,7 @@ const ProductCard = ({ title, sku, price, description, weight, image }) => {
             </p>
           </div>
 
-          {cartItems.size > 0 ? (
+          {itemQuantity > 0 ? (
             <>
               <div className="text-center mt-6 pb-2">
                 <button

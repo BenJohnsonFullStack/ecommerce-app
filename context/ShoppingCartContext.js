@@ -60,7 +60,13 @@ const ShoppingCartProvider = ({ children }) => {
   };
 
   const getCartQuantity = () => {
-    return cartItems.reduce((quantity, item) => item.quantity + quantity, 0);
+    let totalQuantity = 0;
+
+    for (const value of cartItems.values()) {
+      totalQuantity += value.quantity;
+    }
+
+    return totalQuantity;
   };
 
   return (

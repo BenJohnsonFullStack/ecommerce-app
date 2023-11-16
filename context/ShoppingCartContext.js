@@ -25,20 +25,21 @@ const ShoppingCartProvider = ({ children }) => {
   };
 
   const addOne = (sku) => {
-    if (!cartItems.has(sku)) {
-      setCartItems((currItems) =>
-        currItems.set(sku, {
+    setCartItems((prevItems) => {
+      const updatedItems = new Map(prevItems);
+
+      if (!updatedItems.has(sku)) {
+        updatedItems.set(sku, {
           sku: sku,
           quantity: 1,
-        })
-      );
-    } else {
-      let existingItem = cartItems.get(sku);
-      setCartItems((currItems) => {
-        existingItem.quantity += 1;
-        return currItems.set(sku, existingItem);
-      });
-    }
+        });
+      } else {
+        let existingItem = updatedItems.get(sku);
+        existingItem = { ...existingItem, quantity: existingItem.quantity + 1 };
+        updatedItems.set(sku, existingItem);
+      }
+      return updatedItems;
+    });
   };
 
   const removeOne = (sku) => {

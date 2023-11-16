@@ -48,16 +48,21 @@ const ShoppingCartProvider = ({ children }) => {
     if (quantity === 1) {
       removeAll(sku);
     } else {
-      let existingItem = cartItems.get(sku);
-      setCartItems((currItems) => {
-        existingItem -= 1;
-        return currItems.set(sku, existingItem);
+      setCartItems((prevItems) => {
+        const updatedItems = new Map(prevItems);
+        let existingItem = updatedItems.get(sku);
+        existingItem = { ...existingItem, quantity: existingItem.quantity - 1 };
+        return updatedItems.set(sku, existingItem);
       });
     }
   };
 
   const removeAll = (sku) => {
-    return cartItems.delete(sku);
+    setCartItems((prevItems) => {
+      const updatedItems = new Map(prevItems);
+      updatedItems.delete(sku);
+      return updatedItems;
+    });
   };
 
   const getCartQuantity = () => {

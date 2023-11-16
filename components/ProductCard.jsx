@@ -46,16 +46,28 @@ const ProductCard = ({ title, sku, price, description, weight, image }) => {
             </p>
           </div>
 
-          {/* {cartItems.size()} */}
-          <div id="order" className="text-center mt-6 pb-2">
-            <button
-              id="addToCart"
-              className="bg-red-300 rounded-md px-4 py-1 hover:bg-red-700 transition-color duration-200"
-              onClick={() => addOne(sku)}
-            >
-              Add to Cart
-            </button>
-          </div>
+          {cartItems.size > 0 ? (
+            <>
+              <div className="text-center mt-6 pb-2">
+                <button
+                  className="bg-red-500 rounded-md py-1 px-4"
+                  onClick={() => removeAll(sku)}
+                >
+                  Remove from Cart
+                </button>
+              </div>
+            </>
+          ) : (
+            <div id="order" className="text-center mt-6 pb-2">
+              <button
+                id="addToCart"
+                className="bg-red-300 rounded-md px-4 py-1 hover:bg-red-700 transition-color duration-200"
+                onClick={() => addOne(sku)}
+              >
+                Add to Cart
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

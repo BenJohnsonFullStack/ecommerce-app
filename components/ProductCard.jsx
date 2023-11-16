@@ -4,8 +4,7 @@ import Image from "next/image";
 import { useShoppingCart } from "@/context/ShoppingCartContext";
 
 const ProductCard = ({ title, sku, price, description, weight, image }) => {
-  const { addOne, removeAll, removeOne, cartItems, getItemQuantity } =
-    useShoppingCart();
+  const { addOne, removeAll, removeOne, getItemQuantity } = useShoppingCart();
 
   const itemQuantity = getItemQuantity(sku);
 
@@ -51,6 +50,23 @@ const ProductCard = ({ title, sku, price, description, weight, image }) => {
 
           {itemQuantity > 0 ? (
             <>
+              <div className="flex w-1/2 gap-6 justify-center items-center mx-auto mt-4">
+                <button
+                  className="px-4 py-2 bg-red-300 cursor-pointer"
+                  onClick={() => removeOne(sku)}
+                >
+                  -
+                </button>
+                <div>
+                  <p>{itemQuantity}</p>
+                </div>
+                <button
+                  className="px-4 py-2 bg-red-300 cursor-pointer"
+                  onClick={() => addOne(sku)}
+                >
+                  +
+                </button>
+              </div>
               <div className="text-center mt-6 pb-2">
                 <button
                   className="bg-red-500 rounded-md py-1 px-4"
@@ -61,15 +77,17 @@ const ProductCard = ({ title, sku, price, description, weight, image }) => {
               </div>
             </>
           ) : (
-            <div id="order" className="text-center mt-6 pb-2">
-              <button
-                id="addToCart"
-                className="bg-red-300 rounded-md px-4 py-1 hover:bg-red-700 transition-color duration-200"
-                onClick={() => addOne(sku)}
-              >
-                Add to Cart
-              </button>
-            </div>
+            <>
+              <div id="order" className="text-center mt-6 pb-2">
+                <button
+                  id="addToCart"
+                  className="bg-red-300 rounded-md px-4 py-1 hover:bg-red-700 transition-color duration-200"
+                  onClick={() => addOne(sku)}
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </>
           )}
         </div>
       </div>

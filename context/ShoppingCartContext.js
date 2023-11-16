@@ -3,7 +3,7 @@
 import { createContext, useState, useContext } from "react";
 
 export const ShoppingCartContext = createContext({
-  cartItems: [],
+  cartItems: {},
   getCartQuantity: () => {},
   getItemQuantity: () => {},
   toggleCart: () => {},

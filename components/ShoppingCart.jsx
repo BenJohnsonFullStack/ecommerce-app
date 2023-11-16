@@ -5,6 +5,7 @@ import { useState } from "react";
 const ShoppingCart = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { getCartQuantity, cartItems, removeAll } = useShoppingCart();
+
   const cartQuantity = getCartQuantity();
 
   const products = [...cartItems.values()];

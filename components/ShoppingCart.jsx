@@ -1,22 +1,32 @@
 import { useShoppingCart } from "@/context/ShoppingCartContext";
 import Image from "next/image";
 import { useState } from "react";
-import { checkout } from "@/utils/checkout";
+import { useRouter } from "next/navigation";
 
 const ShoppingCart = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { getCartQuantity, cartItems, removeAll } = useShoppingCart();
+  const router = useRouter();
 
   const cartQuantity = getCartQuantity();
 
   const products = [...cartItems.values()];
 
-  const toggleCart = () => {
-    setIsOpen((prev) => !prev);
+  const handleCheckout = async () => {
+    await fetch("http://localhost:3000/api/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(products),
+    }).then(async (res) => {
+      const response = await res.json();
+      router.push(response.url);
+    });
   };
 
-  const handleCheckout = () => {
-    checkout(products);
+  const toggleCart = () => {
+    setIsOpen((prev) => !prev);
   };
 
   return (

@@ -1,6 +1,7 @@
 import { useShoppingCart } from "@/context/ShoppingCartContext";
 import Image from "next/image";
 import { useState } from "react";
+import { checkout } from "@/utils/checkout";
 
 const ShoppingCart = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,6 +13,10 @@ const ShoppingCart = () => {
 
   const toggleCart = () => {
     setIsOpen((prev) => !prev);
+  };
+
+  const handleCheckout = () => {
+    checkout(products);
   };
 
   return (
@@ -57,6 +62,15 @@ const ShoppingCart = () => {
                 ))}
               </>
             )}
+
+            <div className="text-center">
+              <button
+                className="bg-green-500 py-1 px-4 rounded-md my-6"
+                onClick={handleCheckout}
+              >
+                Checkout
+              </button>
+            </div>
           </div>
         )}
       </div>

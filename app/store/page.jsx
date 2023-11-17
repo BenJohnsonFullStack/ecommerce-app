@@ -13,6 +13,7 @@ const Store = async () => {
         {products.map((product) => (
           <div key={product.sys.id} className="mt-6 grid gap-4">
             <ProductCard
+              id={product.fields.id}
               title={product.fields.productName}
               sku={product.fields.sku}
               price={product.fields.price}

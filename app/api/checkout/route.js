@@ -1,30 +1,60 @@
+const stripe = require("stripe")(process.env.STRIPE_TEST_SECRET);
 import { getProducts } from "@/data/cms/Products";
 
-const stripe = require("stripe")(process.env.STRIPE_TEST_SECRET);
-
 export const POST = async (req) => {
+  // await cartItem data from frontend
   const cart = await req.json();
 
-  let cartMap = new Map(
-    cart.map((item) => [item.sku, { sku: item.sku, quantity: item.quantity }])
-  );
+  try {
+    // convert data back to map for performance
+    let cartMap = new Map(
+      cart.map((item) => [item.sku, { sku: item.sku, quantity: item.quantity }])
+    );
 
-  const data = await getProducts();
-  const products = data.items;
+    // get productData from cms
+    const data = await getProducts();
+    const products = data.items;
 
-  products.map((product) => {
-    const skuToUpdate = product.fields.sku;
+    // iterate over productDaya
+    products.map((product) => {
+      // find cart item
+      const skuToUpdate = product.fields.sku;
 
-    if (cartMap.has(skuToUpdate)) {
-      let updatedCartItem = cartMap.get(skuToUpdate);
-      updatedCartItem = { ...updatedCartItem, id: product.fields.productName };
-      cartMap.set(skuToUpdate, updatedCartItem);
-    }
-  });
+      // update cartItem to include stripe price id
+      if (cartMap.has(skuToUpdate)) {
+        let updatedCartItem = cartMap.get(skuToUpdate);
+        updatedCartItem = { ...updatedCartItem, id: product.fields.id };
+        cartMap.set(skuToUpdate, updatedCartItem);
+      }
+    });
 
-  console.log(cartMap);
+    // convert map back to array for Stripe delivery
+    const stripeProducts = Array.from(cartMap.values());
 
-  return new Response(JSON.stringify(cart));
+    // Stripe requirement for data structure
+    let lineItems = [];
+    stripeProducts.forEach((product) => {
+      lineItems.push({
+        price: product.id,
+        quantity: product.quantity,
+      });
+    });
 
-  //   let lineItems = [];
+    // create Stripe session
+    const stripeSession = await stripe.checkout.sessions.create({
+      line_items: lineItems, // Stripe expects this
+      mode: "payment",
+      success_url: "http://localhost:3000/success", // success redirect
+      cancel_url: "http://localhost:3000/cancel", // cancel redirect
+    });
+
+    // return stripe session URL
+    return new Response(
+      JSON.stringify({
+        url: stripeSession.url,
+      })
+    );
+  } catch (err) {
+    return new Response(JSON.stringify(err.message), { status: err.status });
+  }
 };

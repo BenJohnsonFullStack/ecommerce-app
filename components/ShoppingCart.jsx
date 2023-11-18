@@ -13,7 +13,7 @@ const ShoppingCart = () => {
   const products = [...cartItems.values()];
 
   const handleCheckout = async () => {
-    await fetch("http://localhost:3000/api/checkout", {
+    await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/checkout`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

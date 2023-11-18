@@ -19,7 +19,7 @@ const ShoppingCart = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(products),
+        body: JSON.stringify({ products: products }),
       }).then(async (res) => {
         const response = await res.json();
         router.push(response.url);

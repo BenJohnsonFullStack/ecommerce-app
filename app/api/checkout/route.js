@@ -8,7 +8,10 @@ export const POST = async (req) => {
   try {
     // convert data back to map for performance
     let cartMap = new Map(
-      cart.map((item) => [item.sku, { sku: item.sku, quantity: item.quantity }])
+      cart.products.map((item) => [
+        item.sku,
+        { sku: item.sku, quantity: item.quantity },
+      ])
     );
 
     // get productData from cms

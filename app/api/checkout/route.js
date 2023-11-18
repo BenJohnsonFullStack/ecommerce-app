@@ -8,10 +8,7 @@ export const POST = async (req) => {
   try {
     // convert data back to map for performance
     let cartMap = new Map(
-      cart.products.map((item) => [
-        item.sku,
-        { sku: item.sku, quantity: item.quantity },
-      ])
+      cart.map((item) => [item.sku, { sku: item.sku, quantity: item.quantity }])
     );
 
     // get productData from cms
@@ -47,8 +44,8 @@ export const POST = async (req) => {
     const stripeSession = await stripe.checkout.sessions.create({
       line_items: lineItems, // Stripe expects this
       mode: "payment",
-      success_url: `${process.env.NEXT_PUBLIC_VERCEL_URL}/success`, // success redirect
-      cancel_url: `${process.env.NEXT_PUBLIC_VERCEL_URL}/cancel`, // cancel redirect
+      success_url: "ecommerce-app-alpha-three.vercel.app/success", // success redirect
+      cancel_url: "ecommerce-app-alpha-three.vercel.app/cancel", // cancel redirect
     });
 
     // return stripe session URL

@@ -14,12 +14,12 @@ const ShoppingCart = () => {
 
   const handleCheckout = async () => {
     try {
-      await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/checkout`, {
+      await fetch("ecommerce-app-alpha-three.vercel.app/api/checkout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ products: products }),
+        body: JSON.stringify(products),
       }).then(async (res) => {
         const response = await res.json();
         router.push(response.url);

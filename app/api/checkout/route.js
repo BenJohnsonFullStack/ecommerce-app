@@ -44,8 +44,8 @@ export const POST = async (req) => {
     const stripeSession = await stripe.checkout.sessions.create({
       line_items: lineItems, // Stripe expects this
       mode: "payment",
-      success_url: `${process.env.NEXT_PUBLIC_VERCEL_URL}/success`, // success redirect
-      cancel_url: `${process.env.NEXT_PUBLIC_VERCEL_URL}/cancel`, // cancel redirect
+      success_url: `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/success`, // success redirect
+      cancel_url: `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/cancel`, // cancel redirect
     });
 
     // return stripe session URL

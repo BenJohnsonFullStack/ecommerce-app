@@ -13,16 +13,20 @@ const ShoppingCart = () => {
   const products = [...cartItems.values()];
 
   const handleCheckout = async () => {
-    await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/checkout`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(products),
-    }).then(async (res) => {
-      const response = await res.json();
-      router.push(response.url);
-    });
+    try {
+      await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/checkout`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(products),
+      }).then(async (res) => {
+        const response = await res.json();
+        router.push(response.url);
+      });
+    } catch (err) {
+      console.log(err.message);
+    }
   };
 
   const toggleCart = () => {

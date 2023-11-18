@@ -14,7 +14,7 @@ const ShoppingCart = () => {
 
   const handleCheckout = async () => {
     try {
-      await fetch("ecommerce-app-alpha-three.vercel.app/api/checkout", {
+      await fetch("/api/checkout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
